@@ -13,7 +13,6 @@ export default function ImageUploadForm({ onImageUpload }) {
         const reader = new FileReader();
         reader.onload = () => {
           const newImage = {
-            id: Date.now(),
             file: file,
             preview: reader.result,
             location: location,
