@@ -20,6 +20,12 @@ export function FeaturedPost({ title, date, author, category, image, slug }) {
         <p className='text-sm tracking-wider'>
           {date} - {author}
         </p>
+        <Link
+          href={`/blog/${slug}`}
+          className='mt-4 bg-white text-black px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors'
+        >
+          Read More
+        </Link>
       </div>
     </div>
   );

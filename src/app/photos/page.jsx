@@ -1,8 +1,14 @@
-import { photos } from '../utils/photoData';
+import { connectToDatabase } from '@/lib/mongodb';
 import PhotoCard from '@/components/PhotoCard';
 import { Header } from '@/components/header';
+import { serializeDocument } from '@/lib/serialize';
 
-export default function PhotoGallery() {
+export default async function PhotoGallery() {
+  const { db } = await connectToDatabase();
+  const photos = serializeDocument(
+    await db.collection('images').find({}).toArray()
+  );
+
   return (
     <div className='min-h-screen bg-gray-50'>
       <Header />
@@ -11,7 +17,7 @@ export default function PhotoGallery() {
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {photos.map((photo) => (
             <div
-              key={photo.id}
+              key={photo._id}
               className='aspect-[4/3]'
             >
               <PhotoCard photo={photo} />

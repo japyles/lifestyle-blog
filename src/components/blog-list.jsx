@@ -5,18 +5,24 @@ import { ArrowRight } from 'lucide-react';
 export function BlogList({ posts }) {
   return (
     <div className='space-y-16'>
-      {posts.map((post, index) => (
+      {posts.map((post) => (
         <article
-          key={index}
+          key={post._id}
           className='grid md:grid-cols-2 gap-8 items-center'
         >
           <div className='relative aspect-square md:aspect-[4/3]'>
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className='object-cover'
-            />
+            {post.imageUrl ? (
+              <Image
+                src={post.imageUrl}
+                alt={post.title}
+                fill
+                className='object-cover'
+              />
+            ) : (
+              <div className='w-full h-full bg-gray-200 flex items-center justify-center'>
+                <span className='text-gray-400'>No image</span>
+              </div>
+            )}
           </div>
           <div className='space-y-4'>
             <span className='text-[#896632] text-sm tracking-wider'>
@@ -26,11 +32,13 @@ export function BlogList({ posts }) {
               {post.title}
             </h2>
             <p className='text-sm text-[#543916]'>
-              {post.date} - {post.author}
+              {new Date(post.createdAt).toLocaleDateString()}
             </p>
-            <p className='text-[#735126] leading-relaxed'>{post.excerpt}</p>
+            <p className='text-[#735126] leading-relaxed'>
+              {post.content.substring(0, 200)}...
+            </p>
             <Link
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post._id}`}
               className='inline-flex items-center gap-2 bg-[#e7d2b7] text-[#543916] px-6 py-2 text-sm hover:bg-[#e7d2b7]/90 transition-colors'
             >
               READ MORE

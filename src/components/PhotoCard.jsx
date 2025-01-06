@@ -23,7 +23,7 @@ export default function PhotoCard({ photo }) {
     >
       <div className='relative w-full h-full'>
         <Image
-          src={photo.imageUrl}
+          src={photo.url} // Changed from photo.imageUrl to photo.url
           alt={photo.title}
           fill
           className='object-cover'
@@ -33,11 +33,13 @@ export default function PhotoCard({ photo }) {
       {isHovered && (
         <div className='absolute inset-0 bg-black bg-opacity-70 p-4 text-white transition-opacity duration-300'>
           <h3 className='text-xl font-bold mb-1'>{photo.title}</h3>
-          <p className='text-sm mb-2'>{photo.date}</p>
+          <p className='text-sm mb-2'>
+            {new Date(photo.uploadedAt).toLocaleDateString()}
+          </p>
           <p className='text-sm mb-4'>{photo.description}</p>
           <div className='flex space-x-2'>
             <FacebookShareButton
-              url={`https://yourdomain.com/photo/${photo.id}`}
+              url={`https://yourdomain.com/photo/${photo._id}`}
             >
               <FacebookIcon
                 size={32}
@@ -45,7 +47,7 @@ export default function PhotoCard({ photo }) {
               />
             </FacebookShareButton>
             <TwitterShareButton
-              url={`https://yourdomain.com/photo/${photo.id}`}
+              url={`https://yourdomain.com/photo/${photo._id}`}
               title={photo.title}
             >
               <TwitterIcon
@@ -54,7 +56,7 @@ export default function PhotoCard({ photo }) {
               />
             </TwitterShareButton>
             <LinkedinShareButton
-              url={`https://yourdomain.com/photo/${photo.id}`}
+              url={`https://yourdomain.com/photo/${photo._id}`}
             >
               <LinkedinIcon
                 size={32}
@@ -70,12 +72,10 @@ export default function PhotoCard({ photo }) {
 
 PhotoCard.propTypes = {
   photo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
+    url: PropTypes.string.isRequired,
+    uploadedAt: PropTypes.string.isRequired,
   }).isRequired,
 };

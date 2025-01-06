@@ -1,49 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/header';
 import ImageUploadForm from '@/components/ImageUploadForm';
-import ImageGallery from '@/components/ImageGallery';
+import BlogPostForm from '@/components/BlogPostForm';
 
 export default function Dashboard() {
-  const [images, setImages] = useState([]);
   const { data: session, status } = useSession();
   const router = useRouter();
-
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/auth/signin');
-    }
-  }, [status, router]);
-
-  const handleNewImage = (newImage) => {
-    setImages([...images, newImage]);
-  };
-
-  const handleSubmit = async () => {
-    const response = await fetch('/api/upload', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ images }),
-    });
-
-    if (response.ok) {
-      alert('Images uploaded successfully');
-      setImages([]);
-    } else {
-      alert('Failed to upload images');
-    }
-  };
 
   if (status === 'loading') {
     return <div>Loading...</div>;
   }
 
-  if (!session) {
+  if (!session || session.user.role !== 'admin') {
+    router.push('/auth/signin');
     return null;
   }
 
@@ -52,14 +24,16 @@ export default function Dashboard() {
       <Header />
       <div className='container mx-auto px-4 py-8'>
         <h1 className='text-3xl font-bold mb-8 text-center'>Dashboard</h1>
-        <ImageUploadForm onImageUpload={handleNewImage} />
-        <ImageGallery images={images} />
-        <button
-          onClick={handleSubmit}
-          className='mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-        >
-          Submit Images
-        </button>
+        <div className='grid md:grid-cols-2 gap-8'>
+          <div>
+            <h2 className='text-2xl font-semibold mb-4'>Upload Images</h2>
+            <ImageUploadForm />
+          </div>
+          <div>
+            <h2 className='text-2xl font-semibold mb-4'>Create Blog Post</h2>
+            <BlogPostForm />
+          </div>
+        </div>
       </div>
     </div>
   );
