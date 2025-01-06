@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Search } from 'lucide-react';
 import { MobileNav } from './mobile-nav';
 import { SearchForm } from './search-form';
 
@@ -9,6 +10,7 @@ export function Header() {
     { title: 'ABOUT', href: '/about' },
     { title: 'BLOG', href: '/blog' },
     { title: 'CONTACT', href: '/contact' },
+    { title: 'DASHBOARD', href: '/dashboard' },
   ];
 
   return (
