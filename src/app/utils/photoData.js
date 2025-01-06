@@ -1,0 +1,48 @@
+export const photos = [
+  {
+    id: 1,
+    title: "Sunset at the Beach",
+    date: "2023-06-15",
+    description: "A beautiful sunset captured at a tropical beach.",
+    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: 2,
+    title: "Mountain Peak",
+    date: "2023-06-10",
+    description: "A majestic mountain peak covered in snow.",
+    imageUrl: "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+    width: 600,
+    height: 800,
+  },
+  {
+    id: 3,
+    title: "City Lights",
+    date: "2023-06-05",
+    description: "A bustling city skyline at night.",
+    imageUrl: "https://images.unsplash.com/photo-1519501025264-65ba15a82390",
+    width: 900,
+    height: 600,
+  },
+  {
+    id: 4,
+    title: "Forest Path",
+    date: "2023-05-30",
+    description: "A serene path through a lush green forest.",
+    imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+    width: 600,
+    height: 900,
+  },
+  {
+    id: 5,
+    title: "Desert Landscape",
+    date: "2023-05-25",
+    description: "A vast desert landscape with rolling sand dunes.",
+    imageUrl: "https://images.unsplash.com/photo-1509316785289-025f5b846b35",
+    width: 800,
+    height: 500,
+  },
+];
+
