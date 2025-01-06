@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Search } from 'lucide-react';
 import { MobileNav } from './mobile-nav';
+import { SearchForm } from './search-form';
 
 export function Header() {
   const navItems = [
@@ -21,7 +21,6 @@ export function Header() {
           >
             LifeStyle
           </Link>
-          <MobileNav items={navItems} />
           <ul className='hidden md:flex items-center space-x-8'>
             {navItems.map((item) => (
               <li key={item.href}>
@@ -34,10 +33,10 @@ export function Header() {
               </li>
             ))}
           </ul>
-
-          <button className='p-2 hover:bg-gray-100 rounded-full transition-colors'>
-            <Search className='w-5 h-5' />
-          </button>
+          <div className='hidden md:block'>
+            <SearchForm />
+          </div>
+          <MobileNav items={navItems} />
         </nav>
       </div>
     </header>
