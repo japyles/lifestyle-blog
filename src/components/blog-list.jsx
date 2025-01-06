@@ -28,7 +28,7 @@ export function BlogList({ posts }) {
             <span className='text-[#896632] text-sm tracking-wider'>
               {post.category}
             </span>
-            <h2 className='font-playfair text-[#1b1b1b] text-4xl'>
+            <h2 className='font-dm-serif text-[#1b1b1b] text-4xl'>
               {post.title}
             </h2>
             <p className='text-sm text-[#543916]'>
