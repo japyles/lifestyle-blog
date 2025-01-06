@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { SearchForm } from './search-form';
 
-export function MobileNav({ items }) {
+export function MobileNav({ items, session, onLogout }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,6 +34,17 @@ export function MobileNav({ items }) {
                 {item.title}
               </Link>
             ))}
+            {session && (
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  onLogout();
+                }}
+                className='block text-lg hover:text-gray-600 transition-colors'
+              >
+                LOGOUT
+              </button>
+            )}
           </nav>
         </div>
       )}

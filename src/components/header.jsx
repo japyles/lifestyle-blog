@@ -1,9 +1,14 @@
+'use client';
+
+import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { MobileNav } from './mobile-nav';
 import { SearchForm } from './search-form';
 
 export function Header() {
+  const { data: session } = useSession();
+
   const navItems = [
     { title: 'HOME', href: '/' },
     { title: 'PHOTOS', href: '/photos' },
@@ -12,6 +17,10 @@ export function Header() {
     { title: 'CONTACT', href: '/contact' },
     { title: 'DASHBOARD', href: '/dashboard' },
   ];
+
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: '/' });
+  };
 
   return (
     <header className='border-b'>
@@ -34,11 +43,25 @@ export function Header() {
                 </Link>
               </li>
             ))}
+            {session && (
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className='text-sm tracking-wide hover:text-gray-600 transition-colors'
+                >
+                  LOGOUT
+                </button>
+              </li>
+            )}
           </ul>
           <div className='hidden md:block'>
             <SearchForm />
           </div>
-          <MobileNav items={navItems} />
+          <MobileNav
+            items={navItems}
+            session={session}
+            onLogout={handleLogout}
+          />
         </nav>
       </div>
     </header>
