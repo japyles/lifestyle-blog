@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { Search } from 'lucide-react';
+import { MobileNav } from './mobile-nav';
 
 export function Header() {
   const navItems = [
-    { title: 'ANA SAYFA', href: '/' },
-    { title: 'FOTOĞRAFLAR', href: '/fotograflar' },
-    { title: 'HAKKIMDA', href: '/hakkimda' },
+    { title: 'HOME', href: '/' },
+    { title: 'PHOTOS', href: '/photos' },
+    { title: 'ABOUT', href: '/about' },
     { title: 'BLOG', href: '/blog' },
-    { title: 'İLETİŞİM', href: '/iletisim' },
+    { title: 'CONTACT', href: '/contact' },
   ];
 
   return (
@@ -20,7 +21,7 @@ export function Header() {
           >
             LifeStyle
           </Link>
-
+          <MobileNav items={navItems} />
           <ul className='hidden md:flex items-center space-x-8'>
             {navItems.map((item) => (
               <li key={item.href}>

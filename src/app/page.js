@@ -5,44 +5,44 @@ import { BlogPosts } from '@/components/blog-posts'
 
 const popularPosts = [
   {
-    title: "Filtre kahve ile granül kahve arasındaki farklar",
-    date: "10 HAZİRAN 2021",
-    author: "SÜDENUR TOKÖOZ",
+    title: "Differences between filter coffee and instant coffee",
+    date: "JUNE 10, 2021",
+    author: "SUSAN THOMPSON",
     image: "/placeholder.svg?height=80&width=80",
-    slug: "kahve-farklari"
+    slug: "coffee-differences"
   },
   {
-    title: "Mutlaka uygulamanız gereken bakım sırları",
-    date: "08 HAZİRAN 2021",
-    author: "HASAN ŞEREF",
+    title: "Essential beauty care tips you must follow",
+    date: "JUNE 8, 2021",
+    author: "HANNAH SMITH",
     image: "/placeholder.svg?height=80&width=80",
-    slug: "bakim-sirlari"
+    slug: "beauty-tips"
   },
   {
-    title: "Mezoterapi nedir? Nerelerde kullanılır?",
-    date: "16 HAZİRAN 2021",
-    author: "DAMLA AYDIN",
+    title: "What is mesotherapy? Where is it used?",
+    date: "JUNE 16, 2021",
+    author: "DIANA ADAMS",
     image: "/placeholder.svg?height=80&width=80",
-    slug: "mezoterapi"
+    slug: "mesotherapy"
   }
 ]
 
 const blogPosts = [
   {
-    title: "Doğal makyaj tüyoları",
-    date: "10 HAZİRAN 2021",
-    author: "SÜDENUR TOKÖOZ",
+    title: "Natural makeup tips",
+    date: "JUNE 10, 2021",
+    author: "SUSAN THOMPSON",
     image: "/placeholder.svg?height=600&width=1200",
-    slug: "dogal-makyaj-tuyolari",
-    excerpt: "Günlük hayatın koşuşturması içinde vücudumuz kadar zihnimizi de yoruluyor. Uzandığımız zaman vücudumuzu dinlendirebilsekte zihnimizi çok kolay dinlendiremiyoruz. Özellikle son bir yıldır içinde bulunduğumuz pandemi şartları zihnimizi ve ruhumuzu daha çok yormaya başladı."
+    slug: "natural-makeup-tips",
+    excerpt: "In the hustle and bustle of daily life, our minds get as tired as our bodies. While we can rest our bodies when we lie down, we can't easily rest our minds. Especially during the pandemic conditions we've been in for the past year, our minds and souls have started to get more tired."
   },
   {
-    title: "Güneşe çıkmadan önce mutlaka cilt bakımı uygulayın",
-    date: "10 HAZİRAN 2021",
-    author: "SÜDENUR TOKÖOZ",
+    title: "Always apply skincare before sun exposure",
+    date: "JUNE 10, 2021",
+    author: "SUSAN THOMPSON",
     image: "/placeholder.svg?height=600&width=1200",
-    slug: "cilt-bakimi",
-    excerpt: "Normalde kendimizi doğaya atıp, tatile çok rahat giderken artık bu seçeneklerin kısıtlı olması sonucunda evde yapılabilecek rahatlama yöntemlerini keşfetmeye başladık. İşte tam bu noktada aromaterapinin gücünü de keşfettik."
+    slug: "skincare",
+    excerpt: "While we used to be able to easily go out in nature and on vacation, now that these options are limited, we've started to discover relaxation methods that can be done at home. It's at this point that we discovered the power of aromatherapy."
   }
 ]
 
@@ -52,12 +52,12 @@ export default function Home() {
       <Header />
       <main>
         <FeaturedPost
-          title="Doğal makyaj tüyoları"
-          date="10 HAZİRAN 2021"
-          author="SÜDENUR TOKÖOZ"
+          title="Natural makeup tips"
+          date="JUNE 10, 2021"
+          author="SUSAN THOMPSON"
           category="YAŞAM TARZI"
           image="/placeholder.svg?height=600&width=1200"
-          slug="dogal-makyaj-tuyolari"
+          slug="natural-makeup-tips"
         />
         <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-3 gap-8">
