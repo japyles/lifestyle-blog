@@ -18,7 +18,7 @@
 
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -34,9 +34,14 @@ module.exports = {
         sans: ['var(--font-inter)'],
         serif: ['var(--font-playfair)'],
         'dm-serif': ['var(--font-dm-serif-text)'],
+        'rubik-vinyl': ['var(--font-rubik-vinyl)'],
+        'anton': ['var(--font-anton)'],
+        'lilita-one': ['var(--font-lilita-one)'],
       },
     },
   },
   plugins: [],
 }
+
+export default config 
 

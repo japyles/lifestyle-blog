@@ -5,9 +5,81 @@
 :root {
   --font-inter: var(--font-inter);
   --font-playfair: var(--font-playfair);
+  --font-dm-serif-text: var(--font-dm-serif-text);
+  --font-rubik-vinyl: var(--font-rubik-vinyl);
+  --font-anton: var(--font-anton);
+  --font-lilita-one: var(--font-lilita-one);
 }
 
 .font-playfair {
   font-family: var(--font-playfair);
 }
 
+.font-dm-serif {
+  font-family: var(--font-dm-serif-text);
+}
+
+.font-rubik-vinyl {
+  font-family: var(--font-rubik-vinyl);
+}
+
+.font-anton {
+  font-family: var(--font-anton);
+}
+
+.lilita-one {
+  font-family: var(--font-lilita-one);
+}
+
+/* @layer base {
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose p {
+    @apply mb-6 text-gray-900 text-lg leading-relaxed whitespace-pre-wrap;
+  }
+
+  .prose p strong {
+    @apply font-bold;
+  }
+
+  .prose p u {
+    @apply underline;
+  }
+
+  .prose h2 {
+    @apply font-dm-serif text-3xl mb-6 mt-12;
+  }
+
+  .prose h3 {
+    @apply font-dm-serif text-2xl mb-4 mt-8;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-6 ml-6 space-y-2;
+  }
+
+  .prose li {
+    @apply text-gray-900;
+  }
+
+  .prose img {
+    @apply rounded-lg my-8 mx-auto;
+  }
+
+  .prose a {
+    @apply text-indigo-600 hover:text-indigo-800 transition-colors;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-gray-200 pl-4 italic my-6;
+  }
+} */
