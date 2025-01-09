@@ -5,8 +5,11 @@ export function parseMarkdown(text) {
     // Replace __underline__ with <u>underline</u>
     text = text.replace(/__(.*?)__/g, '<u>$1</u>');
     
-    // Split into paragraphs
-    return text.split('\n').map((paragraph) => `<p>${paragraph}</p>`).join('');
+    // Replace single line breaks with <br> tags
+    text = text.replace(/(?<!\n)\n(?!\n)/g, '<br>');
+    
+    // Split into paragraphs (double line breaks)
+    return text.split(/\n\n+/).map((paragraph) => `<p>${paragraph}</p>`).join('');
   }
   
   
