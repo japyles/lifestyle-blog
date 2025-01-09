@@ -45,6 +45,10 @@ export default function EditBlogPostForm({ post }) {
     }
   };
 
+  const handleCancel = () => {
+    router.push(`/blog/${post._id}`);
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -122,13 +126,22 @@ export default function EditBlogPostForm({ post }) {
           className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
         />
       </div>
-      <button
-        type='submit'
-        disabled={submitting}
-        className='w-full bg-blue-500 text-white p-2 rounded disabled:bg-gray-300'
-      >
-        {submitting ? 'Updating...' : 'Update Blog Post'}
-      </button>
+      <div className='flex gap-4'>
+        <button
+          type='submit'
+          disabled={submitting}
+          className='flex-1 bg-blue-500 text-white p-2 rounded disabled:bg-gray-300 hover:bg-blue-600 transition-colors'
+        >
+          {submitting ? 'Updating...' : 'Update Blog Post'}
+        </button>
+        <button
+          type='button'
+          onClick={handleCancel}
+          className='flex-1 bg-gray-100 text-gray-700 p-2 rounded hover:bg-gray-200 transition-colors'
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }
