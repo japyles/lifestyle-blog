@@ -10,6 +10,8 @@ import {
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
+  VKIcon,
+  VKShareButton,
 } from 'next-share';
 
 export default function PhotoCard({ photo }) {
@@ -59,14 +61,14 @@ export default function PhotoCard({ photo }) {
                 round
               />
             </TwitterShareButton>
-            <LinkedinShareButton
+            <VKShareButton
               url={`https://yourdomain.com/photo/${photo._id}`}
             >
-              <LinkedinIcon
+              <VKIcon
                 size={32}
                 round
               />
-            </LinkedinShareButton>
+            </VKShareButton>
           </div>
         </div>
       </div>
