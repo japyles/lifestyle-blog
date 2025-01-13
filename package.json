@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@tailwindcss/typography": "^0.5.16",
+    "date-fns": "^4.1.0",
     "formidable": "^3.5.2",
     "lucide-react": "^0.469.0",
     "mongodb": "^6.12.0",
