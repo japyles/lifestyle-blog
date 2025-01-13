@@ -9,9 +9,11 @@ export default async function handler(req, res) {
 
     try {
       const comment = {
+        _id: new ObjectId(),
         content,
         author,
         createdAt: new Date(),
+        replies: []
       }
 
       let updateOperation

@@ -66,6 +66,7 @@ export default function CommentSection({ postId, initialComments, session }) {
           comment={comment}
           postId={postId}
           onReply={handleReply}
+          session={session}
         />
       ))}
       <form
@@ -81,7 +82,7 @@ export default function CommentSection({ postId, initialComments, session }) {
         />
         <button
           type='submit'
-          className='mt-2 bg-blue-500 text-white px-4 py-2 rounded'
+          className='mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors'
         >
           Submit Comment
         </button>

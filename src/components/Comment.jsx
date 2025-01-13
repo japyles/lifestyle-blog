@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { format } from 'date-fns';
 
-export default function Comment({ comment, postId, onReply }) {
+export default function Comment({ comment, postId, onReply, session }) {
   const [replyContent, setReplyContent] = useState('');
   const [showReplyForm, setShowReplyForm] = useState(false);
 
@@ -22,7 +22,7 @@ export default function Comment({ comment, postId, onReply }) {
       </p>
       <button
         onClick={() => setShowReplyForm(!showReplyForm)}
-        className='text-blue-500 text-sm mt-2'
+        className='text-blue-500 text-sm mt-2 hover:underline'
       >
         Reply
       </button>
@@ -40,7 +40,7 @@ export default function Comment({ comment, postId, onReply }) {
           />
           <button
             type='submit'
-            className='mt-2 bg-blue-500 text-white px-4 py-2 rounded'
+            className='mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors'
           >
             Submit Reply
           </button>
@@ -53,6 +53,7 @@ export default function Comment({ comment, postId, onReply }) {
             comment={reply}
             postId={postId}
             onReply={onReply}
+            session={session}
           />
         ))}
     </div>
