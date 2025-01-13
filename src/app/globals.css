@@ -9,6 +9,9 @@
   --font-rubik-vinyl: var(--font-rubik-vinyl);
   --font-anton: var(--font-anton);
   --font-lilita-one: var(--font-lilita-one);
+  --font-rowdies: var(--font-rowdies);
+  --font-permanent-marker: var(--font-permanent-marker);
+  --font-righteous: var(--font-righteous);
 }
 
 .font-playfair {
@@ -29,6 +32,18 @@
 
 .lilita-one {
   font-family: var(--font-lilita-one);
+}
+
+.rowdies {
+  font-family: var(--font-rowdies);
+}
+
+.permanent-marker {
+  font-family: var(--font-permanent-marker);
+}
+
+.righteous {
+  font-family: var(--font-righteous);
 }
 
 /* @layer base {

@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display, DM_Serif_Text, Rubik_Vinyl, Anton, Lilita_One } from 'next/font/google'
+import { Inter, Playfair_Display, DM_Serif_Text, Rubik_Vinyl, Anton, Lilita_One, Rowdies, Permanent_Marker, Righteous } from 'next/font/google'
 import { Providers } from "@/components/Providers"
 import './globals.css'
 
@@ -26,6 +26,24 @@ const lilitaOne = Lilita_One({
   variable: '--font-lilita-one'
 })
 
+const rowdies = Rowdies({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-rowdies'
+})
+
+const permanentMarker = Permanent_Marker({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-permanent-marker'
+})
+
+const righteous = Righteous({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-righteous'
+})
+
 export const metadata = {
   title: 'LifeStyle Blog',
   description: 'A modern lifestyle blog',
@@ -34,7 +52,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} ${dmSerifText.variable} ${rubikVinyl.variable} ${anton.variable} ${lilitaOne.variable} font-sans`}>
+      <body className={`
+        ${inter.variable} 
+        ${playfair.variable} 
+        ${dmSerifText.variable} 
+        ${rubikVinyl.variable} 
+        ${anton.variable} 
+        ${lilitaOne.variable} 
+        ${rowdies.variable} 
+        ${permanentMarker.variable} 
+        ${righteous.variable}
+        font-sans
+      `}>
         <Providers>{children}</Providers>
       </body>
     </html>
