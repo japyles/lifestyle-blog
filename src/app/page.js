@@ -29,7 +29,7 @@ export default async function Home() {
       <main>
         <div className='relative aspect-[16/9] md:aspect-[21/9] overflow-hidden'>
           <Image
-            src='/hero.jpg'
+            src='/redhead.jpg'
             alt='hero image of pretty girl with freckles'
             fill
             className='object-cover'
