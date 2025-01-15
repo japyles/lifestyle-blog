@@ -58,7 +58,7 @@ export default async function Home() {
           />
           <div className='absolute inset-0 bg-black/20' />
           <div className='absolute inset-0 flex items-center justify-center'>
-            <h1 className='font-permanent-marker text-[seashell] uppercase tracking-widest whitespace-nowrap w-3/4 text-center overflow-hidden text-[4vw] md:text-[6vw] lg:text-[8vw]'>
+            <h1 className='font-permanent-marker text-[seashell] uppercase tracking-widest whitespace-nowrap w-3/4 text-[4vw] text-center'>
               Leilani&#39;s Lifestyle Blog
             </h1>
           </div>
