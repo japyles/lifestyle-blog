@@ -66,13 +66,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['your-domain.com', 'https://lifestyle-blog-kappa.vercel.app', 'localhost'],
+    domains: ['https://lifestyle-blog-kappa.vercel.app'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'lifestyle-blog-kappa.vercel.app',
         port: '',
-        pathname: '/**',
+        pathname: '/uploads/**',
       },
     ],
   },

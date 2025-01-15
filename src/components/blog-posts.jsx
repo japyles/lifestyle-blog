@@ -1,11 +1,13 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function BlogPosts({ posts }) {
   const [imageErrors, setImageErrors] = useState({});
+
+  useEffect(() => {
+    console.log('Posts received:', posts);
+  }, [posts]);
 
   const handleImageError = (postId, error) => {
     console.error(`Image loading error for post ${postId}:`, error);
@@ -15,8 +17,7 @@ export function BlogPosts({ posts }) {
   return (
     <div className='space-y-12'>
       {posts.map((post) => {
-        // Log the image URL for debugging
-        console.log(`Post ${post._id} image URL:`, post.imageUrl);
+        console.log(`Processing post ${post._id}:`, post);
 
         const imageUrl =
           post.imageUrl && post.imageUrl.startsWith('http')
@@ -25,8 +26,7 @@ export function BlogPosts({ posts }) {
             ? `${process.env.NEXT_PUBLIC_BASE_URL}${post.imageUrl}`
             : '/placeholder.svg?height=400&width=600';
 
-        // Log the final computed URL
-        console.log(`Post ${post._id} final URL:`, imageUrl);
+        console.log(`Post ${post._id} final image URL:`, imageUrl);
 
         return (
           <article
@@ -59,7 +59,7 @@ export function BlogPosts({ posts }) {
                 </h2>
                 <p className='text-sm text-gray-500'>
                   {new Date(post.createdAt).toLocaleDateString()} -{' '}
-                  {post.author}
+                  {post.author || 'Anonymous'}
                 </p>
                 <p className='text-gray-600 leading-relaxed'>
                   {post.content.substring(0, 200)}...
@@ -72,6 +72,81 @@ export function BlogPosts({ posts }) {
     </div>
   );
 }
+
+// 'use client';
+
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import { useState } from 'react';
+
+// export function BlogPosts({ posts }) {
+//   const [imageErrors, setImageErrors] = useState({});
+
+//   const handleImageError = (postId, error) => {
+//     console.error(`Image loading error for post ${postId}:`, error);
+//     setImageErrors((prev) => ({ ...prev, [postId]: true }));
+//   };
+
+//   return (
+//     <div className='space-y-12'>
+//       {posts.map((post) => {
+//         // Log the image URL for debugging
+//         console.log(`Post ${post._id} image URL:`, post.imageUrl);
+
+//         const imageUrl =
+//           post.imageUrl && post.imageUrl.startsWith('http')
+//             ? post.imageUrl
+//             : post.imageUrl
+//             ? `${process.env.NEXT_PUBLIC_BASE_URL}${post.imageUrl}`
+//             : '/placeholder.svg?height=400&width=600';
+
+//         // Log the final computed URL
+//         console.log(`Post ${post._id} final URL:`, imageUrl);
+
+//         return (
+//           <article
+//             key={post._id}
+//             className='space-y-4'
+//           >
+//             <Link
+//               href={`/blog/${post._id}`}
+//               className='block group'
+//             >
+//               <div className='relative aspect-[16/9] overflow-hidden bg-gray-100'>
+//                 {imageErrors[post._id] ? (
+//                   <div className='absolute inset-0 flex items-center justify-center text-gray-500'>
+//                     Image failed to load
+//                   </div>
+//                 ) : (
+//                   <Image
+//                     src={imageUrl || '/placeholder.svg'}
+//                     alt={post.title}
+//                     fill
+//                     className='object-cover transition-transform duration-300 group-hover:scale-105'
+//                     onError={(e) => handleImageError(post._id, e)}
+//                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+//                   />
+//                 )}
+//               </div>
+//               <div className='mt-6 space-y-3'>
+//                 <h2 className='font-dm-serif text-3xl group-hover:text-gray-600 transition-colors'>
+//                   {post.title}
+//                 </h2>
+//                 <p className='text-sm text-gray-500'>
+//                   {new Date(post.createdAt).toLocaleDateString()} -{' '}
+//                   {post.author}
+//                 </p>
+//                 <p className='text-gray-600 leading-relaxed'>
+//                   {post.content.substring(0, 200)}...
+//                 </p>
+//               </div>
+//             </Link>
+//           </article>
+//         );
+//       })}
+//     </div>
+//   );
+// }
 
 // import Image from 'next/image';
 // import Link from 'next/link';
