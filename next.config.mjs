@@ -39,10 +39,34 @@
 
 // export default nextConfig
 
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   images: {
+//     domains: ['localhost', 'your-production-domain.com'],
+//     remotePatterns: [
+//       {
+//         protocol: 'https',
+//         hostname: 'images.unsplash.com',
+//         port: '',
+//         pathname: '/**',
+//       },
+//     ],
+//   },
+//   env: {
+//     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+//   },
+//   // experimental: {
+//   //   turbo: true,
+//   // },
+// }
+
+// export default nextConfig
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost', 'your-production-domain.com'],
+    domains: ['your-domain.com', 'your-vercel-deployment-url.vercel.app', 'localhost'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -55,10 +79,6 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
   },
-  // experimental: {
-  //   turbo: true,
-  // },
 }
 
 export default nextConfig
-

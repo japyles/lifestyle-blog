@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 export function BlogPosts({ posts }) {
   return (
@@ -16,7 +15,13 @@ export function BlogPosts({ posts }) {
           >
             <div className='relative aspect-[16/9] overflow-hidden'>
               <Image
-                src={post.imageUrl || '/placeholder.svg?height=400&width=600'}
+                src={
+                  post.imageUrl && post.imageUrl.startsWith('http')
+                    ? post.imageUrl
+                    : post.imageUrl
+                    ? `${process.env.NEXT_PUBLIC_BASE_URL}${post.imageUrl}`
+                    : '/placeholder.svg?height=400&width=600'
+                }
                 alt={post.title}
                 fill
                 className='object-cover transition-transform duration-300 group-hover:scale-105'
@@ -34,25 +39,6 @@ export function BlogPosts({ posts }) {
               </p>
             </div>
           </Link>
-          <div className='flex flex-wrap gap-2'>
-            {post.tags &&
-              post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/tag/${encodeURIComponent(tag)}`}
-                  className='text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-2 py-1 rounded transition-colors'
-                >
-                  #{tag}
-                </Link>
-              ))}
-          </div>
-          <Link
-            href={`/blog/${post._id}`}
-            className='inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors'
-          >
-            Read More
-            <ArrowRight className='w-4 h-4' />
-          </Link>
         </article>
       ))}
     </div>
@@ -61,6 +47,7 @@ export function BlogPosts({ posts }) {
 
 // import Image from 'next/image';
 // import Link from 'next/link';
+// import { ArrowRight } from 'lucide-react';
 
 // export function BlogPosts({ posts }) {
 //   return (
@@ -93,6 +80,25 @@ export function BlogPosts({ posts }) {
 //                 {post.content.substring(0, 200)}...
 //               </p>
 //             </div>
+//           </Link>
+//           <div className='flex flex-wrap gap-2'>
+//             {post.tags &&
+//               post.tags.map((tag) => (
+//                 <Link
+//                   key={tag}
+//                   href={`/tag/${encodeURIComponent(tag)}`}
+//                   className='text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-2 py-1 rounded transition-colors'
+//                 >
+//                   #{tag}
+//                 </Link>
+//               ))}
+//           </div>
+//           <Link
+//             href={`/blog/${post._id}`}
+//             className='inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors'
+//           >
+//             Read More
+//             <ArrowRight className='w-4 h-4' />
 //           </Link>
 //         </article>
 //       ))}
