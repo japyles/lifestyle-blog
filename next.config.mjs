@@ -66,7 +66,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['your-domain.com', 'your-vercel-deployment-url.vercel.app', 'localhost'],
+    domains: ['your-domain.com', 'https://lifestyle-blog-kappa.vercel.app', 'localhost'],
     remotePatterns: [
       {
         protocol: 'https',
