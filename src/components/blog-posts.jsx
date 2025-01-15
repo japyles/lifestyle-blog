@@ -2,83 +2,57 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function BlogPosts({ posts }) {
   const [imageErrors, setImageErrors] = useState({});
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    console.log('Posts received:', posts);
-  }, [posts]);
-
-  const handleImageError = (postId, error) => {
-    console.error(`Image loading error for post ${postId}:`, error);
+  const handleImageError = (postId) => {
     setImageErrors((prev) => ({ ...prev, [postId]: true }));
   };
 
-  const getImageUrl = (url) => {
-    if (!url) return '/placeholder.svg?height=400&width=600';
-    if (url.startsWith('http')) return url;
-    if (url.startsWith('/')) return `${process.env.NEXT_PUBLIC_BASE_URL}${url}`;
-    return `/uploads/${url}`;
-  };
-
-  if (!mounted) {
-    return null; // or a loading placeholder
-  }
-
   return (
     <div className='space-y-12'>
-      {posts.map((post) => {
-        console.log(`Processing post ${post._id}:`, post);
-
-        const imageUrl = getImageUrl(post.imageUrl);
-
-        console.log(`Post ${post._id} final image URL:`, imageUrl);
-
-        return (
-          <article
-            key={post._id}
-            className='space-y-4'
+      {posts.map((post) => (
+        <article
+          key={post._id}
+          className='space-y-4'
+        >
+          <Link
+            href={`/blog/${post._id}`}
+            className='block group'
           >
-            <Link
-              href={`/blog/${post._id}`}
-              className='block group'
-            >
-              <div className='relative aspect-[16/9] overflow-hidden bg-gray-100'>
-                {imageErrors[post._id] ? (
-                  <div className='absolute inset-0 flex items-center justify-center text-gray-500'>
-                    Image failed to load
-                  </div>
-                ) : (
-                  <Image
-                    src={imageUrl || '/placeholder.svg'}
-                    alt={post.title || 'Blog post image'}
-                    width={800}
-                    height={450}
-                    className='object-cover transition-transform duration-300 group-hover:scale-105'
-                    onError={(e) => handleImageError(post._id, e)}
-                  />
-                )}
-              </div>
-              <div className='mt-6 space-y-3'>
-                <h2 className='font-dm-serif text-3xl group-hover:text-gray-600 transition-colors'>
-                  {post.title}
-                </h2>
-                <p className='text-sm text-gray-500'>
-                  {new Date(post.createdAt).toISOString().split('T')[0]} -{' '}
-                  {post.author || 'Anonymous'}
-                </p>
-                <p className='text-gray-600 leading-relaxed'>
-                  {post.content.substring(0, 200)}...
-                </p>
-              </div>
-            </Link>
-          </article>
-        );
-      })}
+            <div className='relative aspect-[16/9] overflow-hidden bg-gray-100'>
+              {imageErrors[post._id] ? (
+                <div className='absolute inset-0 flex items-center justify-center text-gray-500'>
+                  Image not available
+                </div>
+              ) : (
+                <Image
+                  src={post.imageUrl || '/placeholder.svg'}
+                  alt={post.title || 'Blog post image'}
+                  fill
+                  className='object-cover transition-transform duration-300 group-hover:scale-105 rounded-lg shadow-[rgba(0,0,0,0.3)_0px_19px_38px_rgba(0,0,0,0.22)_0px_15px_12px]'
+                  onError={() => handleImageError(post._id)}
+                  unoptimized
+                />
+              )}
+            </div>
+            <div className='mt-6 space-y-3'>
+              <h2 className='font-dm-serif text-3xl group-hover:text-gray-600 transition-colors'>
+                {post.title}
+              </h2>
+              <p className='text-sm text-gray-500'>
+                {new Date(post.createdAt).toLocaleDateString()} -{' '}
+                {post.author || 'Anonymous'}
+              </p>
+              <p className='text-gray-600 leading-relaxed'>
+                {post.content.substring(0, 200)}...
+              </p>
+            </div>
+          </Link>
+        </article>
+      ))}
     </div>
   );
 }

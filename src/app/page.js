@@ -6,6 +6,8 @@ import { connectToDatabase } from '@/lib/mongodb'
 import { serializeDocument } from '@/lib/serialize'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const { db } = await connectToDatabase()
 
@@ -23,6 +25,24 @@ export default async function Home() {
     .limit(2)
     .toArray())
 
+  // Process image URLs
+  const processImageUrl = (url) => {
+    if (!url) return '/placeholder.svg'
+    if (url.startsWith('http')) return url
+    return url.startsWith('/') ? url : `/uploads/${url}`
+  }
+
+  // Process posts to ensure correct image URLs
+  const processedRecentPosts = recentPosts.map(post => ({
+    ...post,
+    imageUrl: processImageUrl(post.imageUrl)
+  }))
+
+  const processedPopularPosts = popularPosts.map(post => ({
+    ...post,
+    imageUrl: processImageUrl(post.imageUrl)
+  }))
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -30,10 +50,11 @@ export default async function Home() {
         <div className='relative aspect-[16/9] md:aspect-[21/9] overflow-hidden'>
           <Image
             src='/hero.jpg'
-            alt='hero image of pretty girl with freckles'
+            alt='hero image'
             fill
             className='object-cover'
             priority
+            unoptimized
           />
           <div className='absolute inset-0 bg-black/20' />
           <div className='absolute inset-0 flex items-center justify-center'>
@@ -45,10 +66,10 @@ export default async function Home() {
         <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2">
-              <BlogPosts posts={recentPosts} />
+              <BlogPosts posts={processedRecentPosts} />
             </div>
             <aside>
-              <PopularPosts posts={popularPosts} />
+              <PopularPosts posts={processedPopularPosts} />
             </aside>
           </div>
         </div>
@@ -56,6 +77,8 @@ export default async function Home() {
     </div>
   )
 }
+
+
 
 
 

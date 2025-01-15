@@ -67,6 +67,7 @@
 const nextConfig = {
   images: {
     domains: ['https://lifestyle-blog-kappa.vercel.app'],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

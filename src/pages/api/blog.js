@@ -50,7 +50,7 @@ export function BlogPosts({ posts }) {
                     alt={post.title || "Blog post image"}
                     width={800}
                     height={450}
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-lg"
                     onError={(e) => handleImageError(post._id, e)}
                   />
                 )}
